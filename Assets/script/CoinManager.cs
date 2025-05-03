@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CoinManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class CoinManager : MonoBehaviour
     private int currentCoins = 0;
 
     public GameObject stairObject; // บันไดที่จะเปิดเมื่อครบ
+    public TextMeshProUGUI coinText; // UI แสดงจำนวนเหรียญ
 
     void Awake()
     {
@@ -17,13 +19,27 @@ public class CoinManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
+    void Start()
+    {
+        UpdateCoinUI(); // อัปเดต UI ตอนเริ่มเกม
+    }
+
     public void CollectCoin()
     {
         currentCoins++;
+        UpdateCoinUI();
 
         if (currentCoins >= coinRequired && stairObject != null)
         {
             stairObject.SetActive(true); // แสดงบันได
+        }
+    }
+
+    void UpdateCoinUI()
+    {
+        if (coinText != null)
+        {
+            coinText.text = $"Coins: {currentCoins} / {coinRequired}";
         }
     }
 }
