@@ -10,6 +10,8 @@ public class CoinManager : MonoBehaviour
     public int coinRequired = 5;
     private int currentCoins = 0;
 
+    public int Coinscurrent => currentCoins;
+
     public GameObject stairObject; // บันไดที่จะเปิดเมื่อครบ
     public TextMeshProUGUI coinText; // UI แสดงจำนวนเหรียญ
 
@@ -33,6 +35,10 @@ public class CoinManager : MonoBehaviour
         {
             stairObject.SetActive(true); // แสดงบันได
         }
+    }
+    public bool HasCollectedAllCoins()
+    {
+        return currentCoins >= coinRequired;
     }
 
     void UpdateCoinUI()

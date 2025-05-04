@@ -8,9 +8,23 @@ public class Stair : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Player"))
+         if (col.CompareTag("Player"))
         {
-            Debug.Log("WINNN");
+            if (CoinManager.Instance != null)
+            {
+                Debug.Log("Current coin: " + CoinManager.Instance.Coinscurrent);
+                Debug.Log("Coin required: " + CoinManager.Instance.coinRequired);
+
+                if (CoinManager.Instance.HasCollectedAllCoins())
+                {
+                    Debug.Log("WINNN");
+                }
+                else
+                {
+                    Debug.Log("ยังเก็บเหรียญไม่ครบ!");
+                }
+            }
         }
+        
     }
 }
