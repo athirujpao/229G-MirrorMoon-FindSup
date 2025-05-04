@@ -5,6 +5,7 @@ using TMPro;
 
 public class CoinManager : MonoBehaviour
 {
+
     public static CoinManager Instance { get; private set; }
 
     public int coinRequired = 5;
@@ -48,4 +49,5 @@ public class CoinManager : MonoBehaviour
             coinText.text = $"Coins: {currentCoins} / {coinRequired}";
         }
     }
+
 }

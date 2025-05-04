@@ -1,30 +1,54 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Stair : MonoBehaviour
 {
-    // เดินไปแล้วเกิดการ win หรือ ใส่ scene credit เลยก็ได้
+    [SerializeField] private TextMeshProUGUI messageText;
+    [SerializeField] private float messageDisplayTime = 2f;
+    [SerializeField] private string sceneToLoad = "WinScene"; // ชื่อซีนที่จะโหลดเมื่อชนะ
 
     void OnTriggerEnter2D(Collider2D col)
     {
-         if (col.CompareTag("Player"))
+        if (col.CompareTag("Player"))
         {
             if (CoinManager.Instance != null)
             {
-                Debug.Log("Current coin: " + CoinManager.Instance.Coinscurrent);
-                Debug.Log("Coin required: " + CoinManager.Instance.coinRequired);
-
                 if (CoinManager.Instance.HasCollectedAllCoins())
                 {
-                    Debug.Log("WINNN");
+                    ShowMessage("Loading...");
+                    StartCoroutine(LoadSceneAfterDelay());
                 }
                 else
                 {
-                    Debug.Log("ยังเก็บเหรียญไม่ครบ!");
+                    ShowMessage("Not enough coins!");
                 }
             }
         }
-        
+    }
+
+    void ShowMessage(string message)
+    {
+        if (messageText != null)
+        {
+            messageText.text = message;
+            messageText.gameObject.SetActive(true);
+            StopAllCoroutines();
+            StartCoroutine(HideMessageAfterDelay());
+        }
+    }
+
+    IEnumerator HideMessageAfterDelay()
+    {
+        yield return new WaitForSeconds(messageDisplayTime);
+        messageText.gameObject.SetActive(false);
+    }
+
+    IEnumerator LoadSceneAfterDelay()
+    {
+        yield return new WaitForSeconds(messageDisplayTime); // รอให้เห็นข้อความก่อน
+        SceneManager.LoadScene(sceneToLoad);
     }
 }
