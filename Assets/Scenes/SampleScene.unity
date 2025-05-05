@@ -672,9 +672,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.21274686
+    x: 0.21203953
     y: 0
-    width: 0.5745063
+    width: 0.57502246
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -10091,7 +10091,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 459, y: 162.9}
+  m_AnchoredPosition: {x: -426, y: 162.9}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1210085187
@@ -11045,7 +11045,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -427.7, y: 165.1}
+  m_AnchoredPosition: {x: 425, y: 165.1}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1719708562
@@ -11689,6 +11689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageText: {fileID: 1210085187}
   messageDisplayTime: 3
+  sceneToLoad: WinScene
 --- !u!61 &2125407344
 BoxCollider2D:
   m_ObjectHideFlags: 0
